@@ -40,11 +40,8 @@ export default function OliveWedding({ sample }) {
     const reveal = document.querySelectorAll('.olive-suite .olive-reveal');
     const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('is-visible')), { threshold: 0.12 });
     reveal.forEach((section) => observer.observe(section));
-    const openOnScroll = () => setOpened(true);
-    window.addEventListener('wheel', openOnScroll, { once: true, passive: true });
     return () => {
       observer.disconnect();
-      window.removeEventListener('wheel', openOnScroll);
     };
   }, []);
 
