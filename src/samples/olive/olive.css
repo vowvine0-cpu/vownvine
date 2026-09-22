@@ -102,6 +102,8 @@
 .olive-suite .olive-hero-content{color:#f7f3ea!important}.olive-suite .olive-hero-content .olive-kicker,.olive-suite .olive-hero-content .olive-script{color:#f7e9c7!important}.olive-suite .olive-hero h1{color:#f7f3ea!important}.olive-suite .olive-date{color:#f7f3ea!important}
 .olive-suite .venue-section,.olive-suite .welcome-note,.olive-suite .timeline-section,.olive-suite .moodboard-section,.olive-suite .olive-rsvp{background:#f7f3ea;color:#3e4541}
 .olive-suite .teal-details,.olive-suite .olive-footer{background:#365b67;color:#f7f3ea}
+.olive-suite .envelope-intro{left:0;right:auto;width:100vw;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.olive-suite .envelope-card{margin:0 auto;flex:0 0 auto}
 .olive-suite{--teal:#B8C4A9;--deep-teal:#5C6B4A;--ivory:#FAF7F2;--paper:#FAF7F2;--gold:#C1775A;--charcoal:#1E1E1E;--warm-gray:#5b625b;background:#FAF7F2;color:#1E1E1E}
 .sample-page.olive>.sample-back{color:#5C6B4A!important;background:#FAF7F2!important}
 .olive-suite .olive-nav{background:#FAF7F2f7!important;border-bottom-color:#5C6B4A33!important}.olive-suite .olive-nav a,.olive-suite .olive-nav button,.olive-suite .olive-nav .olive-mark{color:#5C6B4A!important}.olive-suite .olive-nav a:hover,.olive-suite .olive-nav button:hover{color:#C1775A!important}
