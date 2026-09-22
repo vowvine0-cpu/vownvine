@@ -1,7 +1,6 @@
 import React from 'react';
 import OliveWedding from './OliveWedding';
 import './olive.css';
-import './monogram.css';
 
 export const oliveGarden = {
   path: '/samples/olive-garden',
@@ -9,8 +8,6 @@ export const oliveGarden = {
   title: 'Camille & Edward',
   monogram: 'C & E',
   eyebrow: 'We are getting married',
-  envelopeMessage: 'The start of our forever',
-  envelopeTitle: 'Camille & Edward',
   message: 'Together with our families, we invite you to celebrate our beginning.',
   date: '18 · 11 · 2027',
   details: ['Kokkini Beach House', 'Mykonos, Greece'],
@@ -31,6 +28,6 @@ export const oliveGarden = {
   ],
 };
 
-export default function OliveGarden({ sample = oliveGarden, editorMode = false }) {
-  return <OliveWedding sample={sample} editorMode={editorMode} />;
+export default function OliveGarden({ sample = oliveGarden, showEnvelopeIntro = false }) {
+  return <OliveWedding sample={sample} showEnvelopeIntro={showEnvelopeIntro} />;
 }
