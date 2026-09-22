@@ -1,5 +1,5 @@
 import React from 'react';
-import InteractiveInvitation from '../InteractiveInvitation';
+import CapriInvitation from './CapriInvitation';
 import './capri.css';
 
 export const sundayInCapri = {
@@ -16,5 +16,5 @@ export const sundayInCapri = {
 };
 
 export default function SundayInCapri({ sample = sundayInCapri }) {
-  return <InteractiveInvitation sample={sample} variant="capri" />;
+  return <CapriInvitation sample={sample} />;
 }

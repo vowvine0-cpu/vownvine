@@ -1,20 +1,20 @@
 import React from 'react';
-import InteractiveInvitation from '../InteractiveInvitation';
+import OliveWedding from './OliveWedding';
 import './olive.css';
 
 export const oliveGarden = {
   path: '/samples/olive-garden',
   className: 'olive',
-  title: 'Alexander & Daria',
-  monogram: 'A & D',
+  title: 'Camille & Edward',
+  monogram: 'C & E',
   eyebrow: 'We are getting married',
   message: 'Together with our families, we invite you to celebrate our beginning.',
-  date: '24 · 08 · 2025 — Saturday',
-  details: ['Villa de Luce', 'Tuscany, Italy'],
-  action: 'RSVP now',
-  subject: 'RSVP Alexander and Daria',
+  date: '18 · 11 · 2027',
+  details: ['Kokkini Beach House', 'Mykonos, Greece'],
+  action: 'Kindly RSVP',
+  subject: 'RSVP Camille and Edward',
 };
 
 export default function OliveGarden({ sample = oliveGarden }) {
-  return <InteractiveInvitation sample={sample} variant="olive" />;
+  return <OliveWedding sample={sample} />;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import InteractiveInvitation from '../InteractiveInvitation';
+import NightInvitation from './NightInvitation';
 import './night.css';
 
 export const midnightToast = {
@@ -16,5 +16,5 @@ export const midnightToast = {
 };
 
 export default function MidnightToast({ sample = midnightToast }) {
-  return <InteractiveInvitation sample={sample} variant="night" />;
+  return <NightInvitation sample={sample} />;
 }
