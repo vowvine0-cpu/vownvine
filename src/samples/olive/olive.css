@@ -98,6 +98,17 @@
 .olive-suite .olive-nav{background:#f7f3eaf7!important;border-bottom-color:#365b6733!important}
 .olive-suite .olive-nav a,.olive-suite .olive-nav button,.olive-suite .olive-nav .olive-mark{color:#365b67!important}
 .olive-suite .olive-nav a:hover,.olive-suite .olive-nav button:hover{color:#b39a63!important}
+.olive-suite .envelope-card{width:min(660px,calc(100vw - 48px));height:min(470px,calc(100vh - 150px));min-height:360px;transform:none;border:1px solid #c9b98f;border-radius:2px;box-shadow:0 24px 55px #1e1e1e2b;background:#FAF7F2}
+.olive-suite .envelope-card:before{inset:14px;border:1px solid #c1775a88}
+.olive-suite .envelope-card:after{bottom:24px;color:#c1775a;font-size:11px;letter-spacing:9px}
+.olive-suite .lace-lining{inset:27px;opacity:.22;background-size:15px 15px}
+.olive-suite .envelope-flap{inset:0 0 45%;padding:0 28px 38px;background:#b8c4a9;border-bottom:1px solid #5c6b4a88;box-shadow:0 7px 14px #1e1e1e18}
+.olive-suite .envelope-flap p{font-size:23px;color:#5c6b4a}.olive-suite .envelope-flap span{font-size:44px;color:#1e1e1e}
+.olive-suite .envelope-flap:after{width:76px;height:76px;background:#FAF7F2;border-color:#c1775a77}
+.olive-suite .envelope-lettering{inset:39px 25px auto}.olive-suite .envelope-lettering p{color:#5c6b4a;font-size:22px}.olive-suite .envelope-lettering span{color:#1e1e1e;font-size:43px}
+.olive-suite .envelope-card .wax-seal{top:55%;width:82px;height:82px;background:radial-gradient(circle at 34% 27%,#fffdf0 0 12%,#e6d9ad 48%,#c1775a 100%);border-color:#f8efcf;box-shadow:0 6px 0 #8f543f,0 10px 18px #1e1e1e33,inset 0 2px 4px #fff9d8}
+.olive-suite .envelope-card .wax-seal span{color:#5c6b4a}.olive-suite .envelope-card .wax-seal:before{border-color:#f8efcfaa}
+@media(max-width:700px){.olive-suite .envelope-card{width:calc(100vw - 32px);height:min(430px,calc(100vh - 125px));min-height:330px}.olive-suite .envelope-lettering{inset:34px 18px auto}.olive-suite .envelope-lettering p{font-size:18px}.olive-suite .envelope-lettering span{font-size:32px}.olive-suite .envelope-flap span{font-size:32px}.olive-suite .envelope-card .wax-seal{width:70px;height:70px}}
 .olive-suite .olive-hero{background-color:#365b67;background-image:linear-gradient(#203e49cc,#365b67cc),url('/olive/couple.jpg')}
 .olive-suite .olive-hero-content{color:#f7f3ea!important}.olive-suite .olive-hero-content .olive-kicker,.olive-suite .olive-hero-content .olive-script{color:#f7e9c7!important}.olive-suite .olive-hero h1{color:#f7f3ea!important}.olive-suite .olive-date{color:#f7f3ea!important}
 .olive-suite .venue-section,.olive-suite .welcome-note,.olive-suite .timeline-section,.olive-suite .moodboard-section,.olive-suite .olive-rsvp{background:#f7f3ea;color:#3e4541}
