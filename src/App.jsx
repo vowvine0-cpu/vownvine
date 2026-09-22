@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import SampleInvitation from './samples/SampleInvitation';
+import SampleInvitation, { InvitationEditor } from './samples/SampleInvitation';
 
 const products = [
   { id: 1, name: 'The Olive Garden', type: 'Wedding', price: 28, image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85', tone: 'olive', badge: 'Bestseller', sample: '/#sample=olive-garden' },
@@ -91,16 +91,26 @@ function Storefront() {
 
       <footer className="footer"><div className="brand"><span>Vow</span><i>&amp;</i><span>Vine</span><small>INVITATION STUDIO</small></div><p>For all of life’s lovely little reasons.</p><div><a href="#shop">Shop</a><a href="#how-it-works">FAQ</a><a href="#about">Instagram</a></div><small>© 2024 Vow &amp; Vine</small></footer>
 
-      {preview && <div className="modal-backdrop" onClick={() => setPreview(null)}><div className="preview-modal" onClick={(event) => event.stopPropagation()}><button className="close" onClick={() => setPreview(null)}>×</button><img src={preview.image} alt="" /><div><p className="eyebrow">{preview.type} invitation</p><h2>{preview.name}</h2><p>Fully editable template · starts at ${preview.price}</p><div className="preview-actions"><a className="button outline" href={preview.sample || '#'} target="_blank" rel="noreferrer">Open live sample <span>↗</span></a><button className="button dark" onClick={() => { addToCart(preview); setPreview(null); }}>Customize this design <span>→</span></button></div></div></div></div>}
+      {preview && <div className="modal-backdrop" onClick={() => setPreview(null)}><div className="preview-modal" onClick={(event) => event.stopPropagation()}><button className="close" onClick={() => setPreview(null)}>×</button><img src={preview.image} alt="" /><div><p className="eyebrow">{preview.type} invitation</p><h2>{preview.name}</h2><p>Fully editable template · starts at ${preview.price}</p><div className="preview-actions"><a className="button outline" href={preview.sample || '#'} target="_blank" rel="noreferrer">Open live sample <span>↗</span></a>{preview.sample && <a className="button dark" href={preview.sample.replace('#sample=', '#edit=')}>Customize this design <span>→</span></a>}</div></div></div></div>}
       {cartOpen && <div className="drawer-backdrop" onClick={() => setCartOpen(false)}><aside className="cart-drawer" onClick={(event) => event.stopPropagation()}><div className="drawer-head"><h2>Your bag <span>{cart.length}</span></h2><button onClick={() => setCartOpen(false)}>×</button></div>{cart.length ? <><div className="cart-items">{cart.map((item, index) => <div className="cart-item" key={`${item.id}-${index}`}><img src={item.image} alt="" /><div><h3>{item.name}</h3><p>{item.type} · ${item.price}</p></div></div>)}</div><div className="cart-total"><span>Estimated total</span><strong>${cart.reduce((total, item) => total + item.price, 0)}</strong></div><button className="button dark checkout" onClick={() => notify('Checkout is ready for your payment integration')}>Continue to checkout <span>→</span></button></> : <div className="empty-cart"><span>✦</span><p>Your bag is waiting<br />for something lovely.</p><a href="#shop" onClick={() => setCartOpen(false)}>Browse designs →</a></div>}</aside></div>}
       {toast && <div className="toast">{toast} <span>✦</span></div>}
     </div>
   );
 }
 
+function CheckoutPage({ slug }) {
+  const titles = { 'olive-garden': 'The Olive Garden', 'sunday-in-capri': 'Sunday in Capri', 'midnight-toast': 'Midnight Toast' };
+  const title = titles[slug] || 'Your invitation';
+  return <main className="checkout-page"><a className="sample-back" href="/">← Vow &amp; Vine</a><section className="checkout-card"><p className="sample-eyebrow">Almost yours</p><h1>Ready to send<br /><em>{title}.</em></h1><p className="checkout-intro">Your invitation is saved and personalized. Complete your order to download and share it with your guests.</p><div className="checkout-summary"><span>Personalized invitation</span><strong>From $28</strong></div><label className="checkout-field">Email for your finished invitation<input type="email" placeholder="you@example.com" /></label><button className="button dark checkout-submit" onClick={() => window.alert('Checkout is ready for payment integration.')}>Continue to payment <span>→</span></button><a className="edit-again" href={`/#edit=${slug}`}>← Edit my invitation</a></section></main>;
+}
+
 export default function App() {
   const samplePath = window.location.pathname.replace(/\/$/, '');
   const hashSample = window.location.hash.match(/^#sample=(.+)$/)?.[1];
+  const hashEdit = window.location.hash.match(/^#edit=(.+)$/)?.[1];
+  const hashCheckout = window.location.hash.match(/^#checkout=(.+)$/)?.[1];
+  if (hashEdit) return <InvitationEditor path={`/samples/${hashEdit}`} />;
+  if (hashCheckout) return <CheckoutPage slug={hashCheckout} />;
   const sampleRoute = hashSample ? `/samples/${hashSample}` : samplePath;
   return sampleRoute.startsWith('/samples/') ? <SampleInvitation path={sampleRoute} /> : <Storefront />;
 }
