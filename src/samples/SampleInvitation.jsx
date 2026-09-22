@@ -92,5 +92,11 @@ export function InvitationEditor({ path }) {
 export default function SampleInvitation({ path }) {
   const sample = sampleTemplates[path] || sampleTemplates['/samples/olive-garden'];
   const saved = localStorage.getItem(`vow-vine-${path}`);
-  return <InvitationCard sample={saved ? JSON.parse(saved) : sample} />;
+  const slug = path.split('/').pop();
+  return (
+    <>
+      <InvitationCard sample={saved ? JSON.parse(saved) : sample} />
+      <a className="sample-customize" href={`/#edit=${slug}`}>Customize this design <span>→</span></a>
+    </>
+  );
 }
