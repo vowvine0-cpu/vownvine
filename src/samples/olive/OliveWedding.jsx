@@ -89,11 +89,13 @@ export default function OliveWedding({ sample }) {
 
   const openInvitation = () => {
     if (opening || opened) return;
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     setOpening(true);
     if (musicOn) startMusic();
     openTimerRef.current = window.setTimeout(() => {
       setOpened(true);
       setOpening(false);
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }, 1350);
   };
   const scrollToSection = (event, id) => {
