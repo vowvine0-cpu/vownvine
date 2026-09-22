@@ -28,9 +28,9 @@ function useCountdown() {
   return time;
 }
 
-export default function OliveWedding({ sample }) {
+export default function OliveWedding({ sample, editorMode = false }) {
   const photos = sample.photos?.length ? sample.photos : defaultPhotos;
-  const [opened, setOpened] = React.useState(false);
+  const [opened, setOpened] = React.useState(editorMode);
   const [opening, setOpening] = React.useState(false);
   const [rsvpOpen, setRsvpOpen] = React.useState(false);
   const [rsvpSent, setRsvpSent] = React.useState(false);
@@ -118,7 +118,7 @@ export default function OliveWedding({ sample }) {
   return (
     <div className={`olive-suite microsite microsite-olive ${opened ? 'is-open' : ''}`}>
       {sample.musicUrl && <audio ref={audioRef} src={sample.musicUrl} loop preload="metadata" />}
-      {!opened && <section className={`envelope-intro ${opening ? 'is-opening' : ''}`} onClick={openInvitation}><div className="envelope-card"><div className="lace-lining" /><div className="envelope-flap" /><div className="envelope-lettering"><p>The start of our forever</p><span>{sample.title}</span></div><div className="wax-seal"><span>{sample.monogram}</span></div><button>Open invitation <span>↓</span></button></div><p className="envelope-hint">Click to open</p></section>}
+      {!opened && <section className={`envelope-intro ${opening ? 'is-opening' : ''}`} onClick={openInvitation}><div className="envelope-card"><div className="lace-lining" /><div className="envelope-flap" /><div className="envelope-lettering"><p>{sample.envelopeMessage || 'The start of our forever'}</p><span>{sample.envelopeTitle || sample.title}</span></div><div className="wax-seal"><span>{sample.monogram}</span></div><button>Open invitation <span>↓</span></button></div><p className="envelope-hint">Click to open</p></section>}
       <nav className="olive-nav"><a href="#olive-home" onClick={(event) => scrollToSection(event, 'olive-home')} className="olive-mark">{sample.monogram}</a><div><a href="#olive-story" onClick={(event) => scrollToSection(event, 'olive-story')}>Our story</a><a href="#olive-details" onClick={(event) => scrollToSection(event, 'olive-details')}>Details</a><a href="#olive-gallery" onClick={(event) => scrollToSection(event, 'olive-gallery')}>Gallery</a><button onClick={() => setRsvpOpen(true)}>RSVP</button></div><button className="music-toggle" onClick={() => { const next = !musicOn; setMusicOn(next); if (next) startMusic(); else stopMusic(); }} aria-label={musicOn ? 'Pause music' : 'Play music'}>{musicOn ? '♫' : '♪'}<small>{sample.musicName}</small></button></nav>
       <main>
         <section className="olive-hero" id="olive-home"><div className="olive-hero-wash" /><span className="olive-flower olive-flower-left">❧</span><span className="olive-flower olive-flower-right">❧</span><div className="olive-hero-content"><p className="olive-kicker">{sample.eyebrow}</p><div className="olive-monogram">{sample.monogram}</div><h1>{sample.title}</h1><p className="olive-script">{sample.message}</p><p className="olive-date">{sample.date}</p><button className="olive-button" onClick={() => setRsvpOpen(true)}>{sample.action} <span>↗</span></button></div><div className="olive-postmark">{sample.details[1]}<br /><small>{sample.date}</small></div><div className={`olive-cassette ${musicOn ? 'is-playing' : ''}`}><span className="cassette-label">{sample.monogram}<br /><small>{sample.musicName}</small></span><i /><i /></div></section>
