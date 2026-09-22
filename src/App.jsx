@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import SampleInvitation, { InvitationEditor } from './samples/SampleInvitation';
 
 const products = [
@@ -105,10 +105,19 @@ function CheckoutPage({ slug }) {
 }
 
 export default function App() {
-  const samplePath = window.location.pathname.replace(/\/$/, '');
-  const hashSample = window.location.hash.match(/^#sample=(.+)$/)?.[1];
-  const hashEdit = window.location.hash.match(/^#edit=(.+)$/)?.[1];
-  const hashCheckout = window.location.hash.match(/^#checkout=(.+)$/)?.[1];
+  const [route, setRoute] = useState(() => `${window.location.pathname}${window.location.hash}`);
+
+  useEffect(() => {
+    const handleHashChange = () => setRoute(`${window.location.pathname}${window.location.hash}`);
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const samplePath = route.split('#')[0].replace(/\/$/, '');
+  const hash = route.split('#')[1] || '';
+  const hashSample = hash.match(/^sample=(.+)$/)?.[1];
+  const hashEdit = hash.match(/^edit=(.+)$/)?.[1];
+  const hashCheckout = hash.match(/^checkout=(.+)$/)?.[1];
   if (hashEdit) return <InvitationEditor path={`/samples/${hashEdit}`} />;
   if (hashCheckout) return <CheckoutPage slug={hashCheckout} />;
   const sampleRoute = hashSample ? `/samples/${hashSample}` : samplePath;
