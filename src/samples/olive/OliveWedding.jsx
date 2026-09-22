@@ -1,6 +1,6 @@
 import React from 'react';
 
-const photos = [
+const defaultPhotos = [
   '/olive/couple.jpg',
   '/olive/table.jpg',
   '/olive/flowers.jpg',
@@ -29,6 +29,7 @@ function useCountdown() {
 }
 
 export default function OliveWedding({ sample }) {
+  const photos = sample.photos?.length ? sample.photos : defaultPhotos;
   const [opened, setOpened] = React.useState(false);
   const [opening, setOpening] = React.useState(false);
   const [rsvpOpen, setRsvpOpen] = React.useState(false);

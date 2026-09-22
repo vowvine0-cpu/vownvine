@@ -20,6 +20,7 @@ export const oliveGarden = {
   familyNote: 'We feel incredibly lucky to have everything we need, and your love and support mean the world to us. Having you with us in Mykonos will make this day more beautiful than we could ever imagine. Thank you for being part of our story.',
   musicUrl: '',
   musicName: 'MYKONOS MIX',
+  photos: ['/olive/couple.jpg', '/olive/table.jpg', '/olive/flowers.jpg'],
   schedule: [
     ['4:00 PM', 'The ceremony', 'Say “I do” with the Aegean glittering behind us.'],
     ['5:30 PM', 'Cocktails', 'Raise a glass as the sun begins to soften.'],
