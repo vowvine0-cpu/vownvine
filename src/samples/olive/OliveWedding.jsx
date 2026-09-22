@@ -30,11 +30,64 @@ function useCountdown() {
 
 export default function OliveWedding({ sample }) {
   const [opened, setOpened] = React.useState(false);
+  const [opening, setOpening] = React.useState(false);
   const [rsvpOpen, setRsvpOpen] = React.useState(false);
   const [rsvpSent, setRsvpSent] = React.useState(false);
   const [galleryOpen, setGalleryOpen] = React.useState(false);
-  const [musicOn, setMusicOn] = React.useState(false);
+  const [musicOn, setMusicOn] = React.useState(true);
+  const audioContextRef = React.useRef(null);
+  const musicTimerRef = React.useRef(null);
+  const openTimerRef = React.useRef(null);
   const countdown = useCountdown();
+
+  const playNote = React.useCallback((frequency, startTime, duration) => {
+    const context = audioContextRef.current;
+    if (!context) return;
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+    oscillator.type = 'sine';
+    oscillator.frequency.value = frequency;
+    gain.gain.setValueAtTime(0.0001, startTime);
+    gain.gain.exponentialRampToValueAtTime(0.045, startTime + 0.12);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+    oscillator.connect(gain).connect(context.destination);
+    oscillator.start(startTime);
+    oscillator.stop(startTime + duration + 0.05);
+  }, []);
+
+  const startMusic = React.useCallback(async () => {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    if (!audioContextRef.current) audioContextRef.current = new AudioContext();
+    await audioContextRef.current.resume();
+    if (musicTimerRef.current) return;
+    const melody = [261.63, 329.63, 392, 329.63, 293.66, 349.23, 440, 349.23];
+    let index = 0;
+    const playPhrase = () => {
+      const now = audioContextRef.current.currentTime;
+      playNote(melody[index % melody.length], now, 2.2);
+      playNote(melody[(index + 2) % melody.length] / 2, now, 2.8);
+      index += 1;
+    };
+    playPhrase();
+    musicTimerRef.current = window.setInterval(playPhrase, 2800);
+  }, [playNote]);
+
+  const stopMusic = React.useCallback(() => {
+    if (musicTimerRef.current) window.clearInterval(musicTimerRef.current);
+    musicTimerRef.current = null;
+    if (audioContextRef.current) audioContextRef.current.suspend();
+  }, []);
+
+  const openInvitation = () => {
+    if (opening || opened) return;
+    setOpening(true);
+    if (musicOn) startMusic();
+    openTimerRef.current = window.setTimeout(() => {
+      setOpened(true);
+      setOpening(false);
+    }, 1350);
+  };
 
   React.useEffect(() => {
     const reveal = document.querySelectorAll('.olive-suite .olive-reveal');
@@ -42,15 +95,18 @@ export default function OliveWedding({ sample }) {
     reveal.forEach((section) => observer.observe(section));
     return () => {
       observer.disconnect();
+      if (musicTimerRef.current) window.clearInterval(musicTimerRef.current);
+      if (audioContextRef.current) audioContextRef.current.close();
+      if (openTimerRef.current) window.clearTimeout(openTimerRef.current);
     };
   }, []);
 
   return (
     <div className={`olive-suite microsite microsite-olive ${opened ? 'is-open' : ''}`}>
-      {!opened && <section className="envelope-intro" onClick={() => setOpened(true)}><div className="envelope-card"><div className="lace-lining" /><div className="envelope-flap"><p>The start of our forever</p><span>Camille &amp; Edward</span></div><div className="wax-seal">C<span>&amp;</span>E</div><button>Open invitation <span>↓</span></button></div><p className="envelope-hint">Click or scroll to open</p></section>}
-      <nav className="olive-nav"><a href="#olive-home" className="olive-mark">C <i>&amp;</i> E</a><div><a href="#olive-story">Our story</a><a href="#olive-details">Details</a><a href="#olive-gallery">Gallery</a><button onClick={() => setRsvpOpen(true)}>RSVP</button></div><button className="music-toggle" onClick={() => setMusicOn(!musicOn)} aria-label="Toggle music">{musicOn ? '♫' : '♪'}</button></nav>
+      {!opened && <section className={`envelope-intro ${opening ? 'is-opening' : ''}`} onClick={openInvitation}><div className="envelope-card"><div className="lace-lining" /><div className="envelope-flap"><p>The start of our forever</p><span>Camille &amp; Edward</span></div><div className="wax-seal">C<span>&amp;</span>E</div><button>Open invitation <span>↓</span></button></div><p className="envelope-hint">Click to open</p></section>}
+      <nav className="olive-nav"><a href="#olive-home" className="olive-mark">C <i>&amp;</i> E</a><div><a href="#olive-story">Our story</a><a href="#olive-details">Details</a><a href="#olive-gallery">Gallery</a><button onClick={() => setRsvpOpen(true)}>RSVP</button></div><button className="music-toggle" onClick={() => { const next = !musicOn; setMusicOn(next); if (next) startMusic(); else stopMusic(); }} aria-label={musicOn ? 'Pause music' : 'Play music'}>{musicOn ? '♫' : '♪'}</button></nav>
       <main>
-        <section className="olive-hero" id="olive-home"><div className="olive-hero-wash" /><span className="olive-flower olive-flower-left">❧</span><span className="olive-flower olive-flower-right">❧</span><div className="olive-hero-content"><p className="olive-kicker">We invite you to the wedding of</p><div className="olive-monogram">C <span>&amp;</span> E</div><h1>Camille <em>&amp;</em><br />Edward</h1><p className="olive-script">together with our families</p><p className="olive-date">Mykonos, 18.11.2027</p><button className="olive-button" onClick={() => setRsvpOpen(true)}>Kindly RSVP <span>↗</span></button></div><div className="olive-postmark">MYKONOS<br /><small>18 · 11 · 27</small></div></section>
+        <section className="olive-hero" id="olive-home"><div className="olive-hero-wash" /><span className="olive-flower olive-flower-left">❧</span><span className="olive-flower olive-flower-right">❧</span><div className="olive-hero-content"><p className="olive-kicker">We invite you to the wedding of</p><div className="olive-monogram">C <span>&amp;</span> E</div><h1>Camille <em>&amp;</em><br />Edward</h1><p className="olive-script">together with our families</p><p className="olive-date">Mykonos, 18.11.2027</p><button className="olive-button" onClick={() => setRsvpOpen(true)}>Kindly RSVP <span>↗</span></button></div><div className="olive-postmark">MYKONOS<br /><small>18 · 11 · 27</small></div><div className={`olive-cassette ${musicOn ? 'is-playing' : ''}`}><span className="cassette-label">C &amp; E<br /><small>MYKONOS MIX</small></span><i /><i /></div></section>
         <section className="countdown-card olive-reveal"><p className="olive-kicker">Counting down to forever</p><div className="olive-countdown">{Object.entries(countdown).map(([unit, value]) => <div key={unit}><strong>{String(value).padStart(2, '0')}</strong><span>{unit}</span></div>)}</div></section>
         <section className="venue-section olive-reveal"><div className="venue-copy"><p className="olive-kicker">The venue</p><h2>Kokkini,<br /><em>Mykonos</em></h2><p className="olive-script">Where the sea meets the sky</p><p className="olive-body">Kokkini is a little corner of the island we love most: whitewashed walls, salt in the air, and golden light that stays with you long after sunset.</p><p className="venue-address">Kokkini Beach House<br />Agios Ioannis, Mykonos<br />846 00 Greece</p><button className="olive-outline" onClick={() => window.open('https://maps.google.com/?q=Kokkini+Mykonos', '_blank')}>View map ↗</button></div><div className="venue-photo"><img src={photos[0]} alt="Wedding couple by the sea" /><span className="venue-tag">Kokkini<br /><small>MYKONOS</small></span></div></section>
         <section className="welcome-note olive-reveal"><span className="ornament">✦</span><p className="olive-kicker">A note for our favorite people</p><h2>Dear friends &amp; family,</h2><p className="olive-body">We feel incredibly lucky to have everything we need, and your love and support mean the world to us. Having you with us in Mykonos will make this day more beautiful than we could ever imagine. Thank you for being part of our story.</p><p className="olive-script">With all our love, Camille &amp; Edward</p><span className="corner-flourish">❧</span></section>
