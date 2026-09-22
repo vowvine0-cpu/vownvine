@@ -1,3 +1,3 @@
-export { oliveGarden } from './OliveGarden';
-export { sundayInCapri } from './SundayInCapri';
-export { midnightToast } from './MidnightToast';
+export { oliveGarden } from './olive/OliveGarden';
+export { sundayInCapri } from './capri/SundayInCapri';
+export { midnightToast } from './night/MidnightToast';

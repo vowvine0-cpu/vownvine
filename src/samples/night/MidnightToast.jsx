@@ -1,5 +1,6 @@
 import React from 'react';
-import InteractiveInvitation from './InteractiveInvitation';
+import InteractiveInvitation from '../InteractiveInvitation';
+import './night.css';
 
 export const midnightToast = {
   path: '/samples/midnight-toast',

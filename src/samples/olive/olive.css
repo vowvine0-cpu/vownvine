@@ -1,0 +1,13 @@
+/* Olive Garden: vintage European countryside invitation */
+.microsite-olive{--sample-ink:#4a4a3b;--sample-olive:#5c5b47;--sample-paper:#faf7f0;--sample-cream:#f5f1e8;--sample-gold:#ad9561;background:var(--sample-paper);color:var(--sample-ink)}
+.microsite-olive .wedding-nav,.microsite-olive .date-band,.microsite-olive .gallery-section{background:var(--sample-paper)}
+.microsite-olive .wedding-hero{background:#a09d7b}
+.microsite-olive .hero-photo{background-image:linear-gradient(#3f402e44,#3f402e55),url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=2200&q=90')}
+.microsite-olive .venue-band,.microsite-olive .wedding-party,.microsite-olive .microsite-footer{background:var(--sample-olive)}
+.microsite-olive .venue-band .script-line,.microsite-olive .wedding-party h2 em{color:#d9c99e}
+.microsite-olive .details-section,.microsite-olive .note-section{background:var(--sample-cream)}
+.microsite-olive .sample-rsvp{border-color:var(--sample-olive);color:var(--sample-olive)}
+.microsite-olive .sample-rsvp:hover,.microsite-olive .rsvp-card .sample-rsvp{background:var(--sample-olive);color:var(--sample-paper)}
+.microsite-olive .rsvp-card{background:var(--sample-paper);border-color:#d7cdbd}
+.microsite-olive .photo-grid img{filter:sepia(.22) saturate(.75)}
+.microsite-olive .photo-grid button:hover img{filter:sepia(0) saturate(1)}

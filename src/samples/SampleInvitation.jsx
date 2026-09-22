@@ -1,8 +1,8 @@
 import React from 'react';
 import './sample.css';
-import OliveGarden from './OliveGarden';
-import SundayInCapri from './SundayInCapri';
-import MidnightToast from './MidnightToast';
+import OliveGarden from './olive/OliveGarden';
+import SundayInCapri from './capri/SundayInCapri';
+import MidnightToast from './night/MidnightToast';
 import { oliveGarden, sundayInCapri, midnightToast } from './sampleData';
 
 export const sampleTemplates = {

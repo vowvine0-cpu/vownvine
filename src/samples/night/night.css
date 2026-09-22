@@ -1,0 +1,16 @@
+/* Midnight Toast: cinematic evening celebration invitation */
+.microsite-night{--sample-ink:#f7f1e7;--sample-night:#202936;--sample-plum:#473c50;--sample-gold:#d2b37b;background:var(--sample-night);color:var(--sample-ink)}
+.microsite-night .wedding-nav,.microsite-night .date-band,.microsite-night .gallery-section{background:#202936;border-color:#526071;color:var(--sample-ink)}
+.microsite-night .wedding-nav a,.microsite-night .wedding-nav button,.microsite-night .date-band{color:var(--sample-ink)}
+.microsite-night .wedding-hero{background:#202936}
+.microsite-night .hero-photo{background-image:linear-gradient(#11192399,#11192388),url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2200&q=90')}
+.microsite-night .venue-band,.microsite-night .wedding-party,.microsite-night .microsite-footer{background:#473c50}
+.microsite-night .venue-band .script-line,.microsite-night .wedding-party h2 em{color:var(--sample-gold)}
+.microsite-night .details-section,.microsite-night .note-section{background:#efe5d5;color:#202936}
+.microsite-night .sample-eyebrow{color:var(--sample-gold)!important}
+.microsite-night .sample-rsvp{border-color:var(--sample-gold);color:var(--sample-gold)}
+.microsite-night .sample-rsvp:hover,.microsite-night .rsvp-card .sample-rsvp{background:var(--sample-gold);color:#202936}
+.microsite-night .rsvp-section{background:#202936}
+.microsite-night .rsvp-card{background:#f7f1e7;color:#202936;border-color:#aa916d}
+.microsite-night .photo-grid img{filter:sepia(.35) brightness(.8)}
+.microsite-night .photo-grid button:hover img{filter:sepia(.1) brightness(1)}

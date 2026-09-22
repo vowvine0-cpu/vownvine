@@ -1,0 +1,13 @@
+/* Sunday in Capri: bright Mediterranean wedding invitation */
+.microsite-capri{--sample-ink:#31535a;--sample-sea:#7ca5a5;--sample-paper:#f8f5eb;--sample-sun:#dfc58b;background:var(--sample-paper);color:var(--sample-ink)}
+.microsite-capri .wedding-nav,.microsite-capri .date-band,.microsite-capri .gallery-section{background:#f8f5eb;border-color:#c5d2cd}
+.microsite-capri .wedding-hero{background:#6e9b9b}
+.microsite-capri .hero-photo{background-image:linear-gradient(#31535a35,#31535a55),url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=2200&q=90')}
+.microsite-capri .venue-band,.microsite-capri .wedding-party,.microsite-capri .microsite-footer{background:var(--sample-ink)}
+.microsite-capri .venue-band .script-line,.microsite-capri .wedding-party h2 em{color:var(--sample-sun)}
+.microsite-capri .details-section,.microsite-capri .note-section{background:#e4eeea}
+.microsite-capri .sample-eyebrow{color:#527b7b!important}
+.microsite-capri .sample-rsvp{border-color:var(--sample-ink);color:var(--sample-ink)}
+.microsite-capri .sample-rsvp:hover,.microsite-capri .rsvp-card .sample-rsvp{background:var(--sample-ink);color:#f8f5eb}
+.microsite-capri .rsvp-card{background:#f8f5eb;border-color:#bfd0ca}
+.microsite-capri .photo-grid img{filter:saturate(.8) brightness(1.05)}

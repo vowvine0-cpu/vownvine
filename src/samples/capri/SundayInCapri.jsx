@@ -1,5 +1,6 @@
 import React from 'react';
-import InteractiveInvitation from './InteractiveInvitation';
+import InteractiveInvitation from '../InteractiveInvitation';
+import './capri.css';
 
 export const sundayInCapri = {
   path: '/samples/sunday-in-capri',
