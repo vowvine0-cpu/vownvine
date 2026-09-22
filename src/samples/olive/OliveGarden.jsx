@@ -1,6 +1,7 @@
 import React from 'react';
 import OliveWedding from './OliveWedding';
 import './olive.css';
+import './monogram.css';
 
 export const oliveGarden = {
   path: '/samples/olive-garden',
