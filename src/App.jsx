@@ -2,11 +2,11 @@ import React, { useMemo, useState } from 'react';
 import SampleInvitation from './samples/SampleInvitation';
 
 const products = [
-  { id: 1, name: 'The Olive Garden', type: 'Wedding', price: 28, image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85', tone: 'olive', badge: 'Bestseller', sample: '/samples/olive-garden' },
-  { id: 2, name: 'Sunday in Capri', type: 'Wedding', price: 32, image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=85', tone: 'blue', badge: 'New', sample: '/samples/sunday-in-capri' },
+  { id: 1, name: 'The Olive Garden', type: 'Wedding', price: 28, image: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85', tone: 'olive', badge: 'Bestseller', sample: '/#sample=olive-garden' },
+  { id: 2, name: 'Sunday in Capri', type: 'Wedding', price: 32, image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=85', tone: 'blue', badge: 'New', sample: '/#sample=sunday-in-capri' },
   { id: 3, name: 'A Little Wild', type: 'Birthday', price: 18, image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=85', tone: 'peach', badge: null },
   { id: 4, name: 'Rattan & Sun', type: 'Baby shower', price: 22, image: 'https://images.unsplash.com/photo-1513159446162-54eb8bdaa79b?auto=format&fit=crop&w=900&q=85', tone: 'sand', badge: 'Popular' },
-  { id: 5, name: 'Midnight Toast', type: 'Celebration', price: 24, image: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=900&q=85', tone: 'night', badge: null, sample: '/samples/midnight-toast' },
+  { id: 5, name: 'Midnight Toast', type: 'Celebration', price: 24, image: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=900&q=85', tone: 'night', badge: null, sample: '/#sample=midnight-toast' },
   { id: 6, name: 'Petal Notes', type: 'Wedding', price: 26, image: 'https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=900&q=85', tone: 'rose', badge: null },
 ];
 
@@ -100,5 +100,7 @@ function Storefront() {
 
 export default function App() {
   const samplePath = window.location.pathname.replace(/\/$/, '');
-  return samplePath.startsWith('/samples/') ? <SampleInvitation path={samplePath} /> : <Storefront />;
+  const hashSample = window.location.hash.match(/^#sample=(.+)$/)?.[1];
+  const sampleRoute = hashSample ? `/samples/${hashSample}` : samplePath;
+  return sampleRoute.startsWith('/samples/') ? <SampleInvitation path={sampleRoute} /> : <Storefront />;
 }
