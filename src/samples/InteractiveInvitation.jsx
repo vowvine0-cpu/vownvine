@@ -9,7 +9,11 @@ export default function InteractiveInvitation({ sample, variant = 'olive' }) {
   const [language, setLanguage] = React.useState('en');
   const [rsvpChoice, setRsvpChoice] = React.useState('yes');
   const [countdown, setCountdown] = React.useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const gallery = [
+  const gallery = isOlive ? [
+    '/olive/couple.jpg',
+    '/olive/table.jpg',
+    '/olive/flowers.jpg',
+  ] : [
     'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85',
     'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=85',
     'https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=900&q=85',

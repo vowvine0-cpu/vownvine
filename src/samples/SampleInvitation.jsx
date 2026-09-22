@@ -11,10 +11,10 @@ export const sampleTemplates = {
   '/samples/midnight-toast': midnightToast,
 };
 
-export function InvitationCard({ sample }) {
+export function InvitationCard({ sample, showBack = true }) {
   return (
     <main className={`sample-page ${sample.className}`}>
-      <a className="sample-back" href="/">← Vow &amp; Vine</a>
+      {showBack && <a className="sample-back" href="/">← Vow &amp; Vine</a>}
       {sample.className === 'olive' && <OliveGarden sample={sample} />}
       {sample.className === 'capri' && <SundayInCapri sample={sample} />}
       {sample.className === 'night' && <MidnightToast sample={sample} />}
@@ -47,7 +47,7 @@ export function InvitationEditor({ path }) {
           <label>Button text<input value={draft.action} onChange={(event) => update('action', event.target.value)} /></label>
           <a className="button dark editor-save" href={`/#checkout=${path.split('/').pop()}`} onClick={() => localStorage.setItem(`vow-vine-${path}`, JSON.stringify(draft))}>Save &amp; continue to payment <span>→</span></a>
         </section>
-        <div className="editor-preview"><p className="preview-label">LIVE PREVIEW</p><InvitationCard sample={draft} /></div>
+        <div className="editor-preview"><p className="preview-label">LIVE PREVIEW</p><InvitationCard sample={draft} showBack={false} /></div>
       </div>
     </main>
   );

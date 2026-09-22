@@ -2,7 +2,7 @@
 .microsite-olive{--sample-ink:#4a4a3b;--sample-olive:#5c5b47;--sample-paper:#faf7f0;--sample-cream:#f5f1e8;--sample-gold:#ad9561;background:var(--sample-paper);color:var(--sample-ink)}
 .microsite-olive .wedding-nav,.microsite-olive .date-band,.microsite-olive .gallery-section{background:var(--sample-paper)}
 .microsite-olive .wedding-hero{background:#a09d7b}
-.microsite-olive .hero-photo{background-image:linear-gradient(#3f402e44,#3f402e55),url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=2200&q=90')}
+.microsite-olive .hero-photo{background-image:linear-gradient(#3f402e44,#3f402e55),url('/olive/couple.jpg')}
 .microsite-olive .venue-band,.microsite-olive .wedding-party,.microsite-olive .microsite-footer{background:var(--sample-olive)}
 .microsite-olive .venue-band .script-line,.microsite-olive .wedding-party h2 em{color:#d9c99e}
 .microsite-olive .details-section,.microsite-olive .note-section{background:var(--sample-cream)}
@@ -11,3 +11,49 @@
 .microsite-olive .rsvp-card{background:var(--sample-paper);border-color:#d7cdbd}
 .microsite-olive .photo-grid img{filter:sepia(.22) saturate(.75)}
 .microsite-olive .photo-grid button:hover img{filter:sepia(0) saturate(1)}
+.microsite-olive{font-family:'DM Sans',sans-serif;letter-spacing:.01em}
+.microsite-olive h1,.microsite-olive h2,.microsite-olive h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;letter-spacing:.04em}
+.microsite-olive .wedding-nav{height:78px;padding-inline:max(28px,calc((100% - 1160px)/2));box-shadow:0 1px 0 #5c5b4712}
+.microsite-olive .wedding-nav>div{gap:28px}
+.microsite-olive .wedding-nav a,.microsite-olive .wedding-nav button{transition:color .25s ease,opacity .25s ease}
+.microsite-olive .wedding-nav a:hover,.microsite-olive .wedding-nav button:hover{color:#ad9561}
+.microsite-olive .wedding-hero{min-height:690px;background:#8f9272}
+.microsite-olive .hero-photo{filter:saturate(.72) contrast(.94);transition:transform 1s ease}
+.microsite-olive .wedding-hero:hover .hero-photo{transform:scale(1.035)}
+.microsite-olive .wedding-hero-copy{padding-block:75px;text-shadow:0 2px 20px #25251b36}
+.microsite-olive .hero-monogram{font-size:43px;color:#f5ead1;border-bottom:1px solid #f5ead188;padding-bottom:17px;display:inline-block}
+.microsite-olive .wedding-hero-copy h1{font-size:clamp(62px,10vw,130px);line-height:.88;max-width:900px}
+.microsite-olive .wedding-hero-copy .script-line{font-size:26px;color:#f5ead1}
+.microsite-olive .wedding-hero-copy .sample-rsvp{margin-top:30px;padding:14px 28px;letter-spacing:.16em;backdrop-filter:blur(4px)}
+.microsite-olive .botanical{opacity:.72;color:#e5ddc5}
+.microsite-olive .date-band{gap:24px;padding:48px 24px;border-bottom:1px solid #d8d0c2;font-size:37px}
+.microsite-olive .date-band b{color:#a69b89}
+.microsite-olive .venue-band{padding:125px 24px;background:linear-gradient(135deg,#5c5b47,#707052);}
+.microsite-olive .venue-band:after{content:'❧';position:absolute;right:8%;bottom:8%;font:105px Georgia,serif;color:#f5f1e833;transform:rotate(150deg)}
+.microsite-olive .venue-band .script-line{font-size:54px;text-shadow:0 2px 12px #2e2e2430}
+.microsite-olive .outline-button{transition:background .25s ease,color .25s ease,transform .25s ease}
+.microsite-olive .outline-button:hover{transform:translateY(-2px)}
+.microsite-olive .wedding-story{padding-block:140px;gap:115px}
+.microsite-olive .story-copy h2,.microsite-olive .details-section h2,.microsite-olive .gallery-section h2,.microsite-olive .rsvp-card h2{letter-spacing:.055em}
+.microsite-olive .story-copy h2 em,.microsite-olive .gallery-section h2 em{color:#6b6a52}
+.microsite-olive .arch-photo{box-shadow:18px 18px 0 #e5e0d2}
+.microsite-olive .note-photo{box-shadow:0 12px 25px #4a4a3b20}
+.microsite-olive .details-section{padding-block:125px}
+.microsite-olive .details-grid{gap:55px}
+.microsite-olive .details-grid article{transition:transform .25s ease}
+.microsite-olive .details-grid article:hover{transform:translateY(-5px)}
+.microsite-olive .line-icon{display:inline-grid;place-items:center;width:44px;height:44px;border:1px solid #ad9561;border-radius:50%;font-size:22px}
+.microsite-olive .wedding-party{padding-block:135px;background:linear-gradient(135deg,#5c5b47,#48483b)}
+.microsite-olive .party-list img{transition:transform .5s ease,filter .5s ease}
+.microsite-olive .party-list article:hover img{transform:scale(1.035);filter:sepia(.12) saturate(.8)}
+.microsite-olive .gallery-section{padding-block:135px}
+.microsite-olive .gallery-section .section-line{margin-bottom:10px}
+.microsite-olive .photo-grid{gap:14px}
+.microsite-olive .photo-grid button{box-shadow:0 8px 24px #4a4a3b12}
+.microsite-olive .note-section{padding-block:125px}
+.microsite-olive .note-section h2{max-width:740px;font-size:clamp(38px,5vw,66px)}
+.microsite-olive .rsvp-section{padding-block:135px;background:#f0ece2}
+.microsite-olive .rsvp-card{border:0;box-shadow:0 20px 55px #4a4a3b14}
+.microsite-olive .rsvp-card h2{font-size:clamp(48px,6vw,70px)}
+.microsite-olive .microsite-footer{padding:45px max(24px,calc((100% - 1100px)/2));border-top:1px solid #d6c9a9;letter-spacing:.04em}
+@media(max-width:700px){.microsite-olive .wedding-nav{height:66px;padding-inline:15px}.microsite-olive .wedding-nav>div{gap:11px}.microsite-olive .wedding-hero{min-height:610px}.microsite-olive .wedding-hero-copy{padding-inline:17px}.microsite-olive .wedding-hero-copy h1{font-size:57px}.microsite-olive .wedding-hero-copy .script-line{font-size:20px}.microsite-olive .date-band{gap:10px;padding-block:34px;font-size:24px}.microsite-olive .date-band b{font-size:8px;margin-left:0}.microsite-olive .venue-band{padding-block:90px}.microsite-olive .venue-band .script-line{font-size:39px}.microsite-olive .venue-band:after{font-size:70px;right:2%;bottom:3%}.microsite-olive .wedding-story{padding-block:90px;gap:65px}.microsite-olive .details-section,.microsite-olive .wedding-party,.microsite-olive .gallery-section,.microsite-olive .note-section,.microsite-olive .rsvp-section{padding-block:90px}.microsite-olive .details-grid{gap:34px}.microsite-olive .party-list{gap:40px}.microsite-olive .party-list img{max-width:300px}.microsite-olive .gallery-section .photo-grid{gap:8px}.microsite-olive .rsvp-card{padding-inline:20px}}
